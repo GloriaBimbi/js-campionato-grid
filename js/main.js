@@ -15,13 +15,23 @@ function createBox() {
   } else {
     box.classList.add("hard");
   }
-  console.log(box);
+
+  return box;
 }
 
 // creo una funzione che genera una griglia sfruttando quella che genera una box
 function createGrid(boxesNum) {
-  for (let i = 0; i < boxesNum; i++) {
-    createBox();
+  for (let i = 1; i <= boxesNum; i++) {
+    // salvo la funzione che genera una box in una variabile
+    let boxElement = createBox();
+    // aggiungo alle singole box il loro numero al centro
+    boxElement.classList.add(
+      "d-flex",
+      "justify-content-center",
+      "align-items-center"
+    );
+    boxElement.innerText = i;
+    console.log(i, boxElement);
   }
 }
 
