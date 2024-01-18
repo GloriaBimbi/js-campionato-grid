@@ -47,9 +47,14 @@
 }
 
 .box {
+  border: 1px solid black;
   width: calc(100% / 10);
   aspect-ratio: 1;
-  border: 1px solid black;
+}
+
+.box.easy {
+  width: calc(100% / 10);
+  aspect-ratio: 1;
 }
 
 .box.medium {
