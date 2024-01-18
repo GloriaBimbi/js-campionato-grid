@@ -1,0 +1,32 @@
+/* RESET
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  display: inline-block;
+}
+
+a {
+  color: inherit;
+}
+
+/* UTILS */
+
+/* .container {
+  max-width: 1080px;
+  padding: 0;
+}
+
+body {
+} */
