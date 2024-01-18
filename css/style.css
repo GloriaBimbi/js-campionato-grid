@@ -67,6 +67,10 @@
   aspect-ratio: 1;
 }
 
+.hover-back-ground {
+  background-color: rgb(9, 126, 165);
+}
+
 /* FOOTER */
 .footer-container {
   min-height: 50px;
