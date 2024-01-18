@@ -37,6 +37,7 @@ function createGrid(boxesNum) {
     boxElement.addEventListener("click", function () {
       // quando l'utente clicca su una cella, questa si colora di azzurro
       this.classList.toggle("hover-back-ground");
+      console.log("Hai cliccato la cella numero: " + this.innerText);
     });
   }
 }
