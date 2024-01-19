@@ -2,6 +2,7 @@
 const playButton = document.getElementById("play-button");
 const difficultyRange = document.getElementById("difficulty");
 const boxContainer = document.getElementById("box-container");
+const loseMessage = document.getElementById("loser-message");
 
 // creo una funzione per generare una box e darle la classe "box" e la classe che fa riferimento al livello di difficoltà scelto dall'utente ("easy", "medium" o "hard")
 function createBox() {
@@ -36,8 +37,16 @@ function createGrid(boxesNum) {
     // creo un evento sul click dell'utente su una box
     boxElement.addEventListener("click", function () {
       // quando l'utente clicca su una box, questa si colora di azzurro
-      this.classList.toggle("hover-back-ground");
+      this.classList.toggle("hover-back-ground-winner");
       console.log("Hai cliccato la cella numero: " + this.innerText);
+      // creo un ciclo che permette di colorare di rosso le caselle che vengono premute, se il loro numero è contenuto nell'array delle bombe
+      for (let i = 0; i < bombsArray.length; i++) {
+        if (bombsArray[i] == boxElement.innerText) {
+          this.classList.add("hover-back-ground-loser");
+          loseMessage.classList.remove("d-none");
+          loseMessage.classList.add("d-block");
+        }
+      }
     });
   }
 }

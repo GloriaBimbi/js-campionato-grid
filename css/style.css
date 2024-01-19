@@ -31,11 +31,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   padding: 50px;
   background-color: aquamarine;
 }
 
-.grid-container {
+#box-container {
   width: 600px;
   aspect-ratio: 1;
   border: 1px solid black;
@@ -67,8 +68,28 @@
   aspect-ratio: 1;
 }
 
-.hover-back-ground {
+.hover-back-ground-winner {
   background-color: rgb(9, 126, 165);
+}
+
+.hover-back-ground-loser {
+  background-color: rgb(189, 19, 19);
+}
+
+#loser-message {
+  width: 600px;
+  aspect-ratio: 1;
+  padding: 30px;
+  background-color: black;
+  color: red;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  position: absolute;
 }
 
 /* FOOTER */
