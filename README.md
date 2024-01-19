@@ -25,3 +25,9 @@ Aggiungere una select accanto al bottone di generazione, che fornisca una scelta
   - creo un evento sul click dell'utente su una box
     - quando l'utente clicca su una box, questa si colora di azzurro e in console stampo il numero della box cliccata
 - genero la griglia quando l'utente clicca sul pulsante "play" con un numero di box diverso a seconda del livello di difficoltà scelto
+
+## GIORNO 2
+
+### STEP 1:
+
+Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe. Attenzione: nella stessa cella può essere posizionata al massimo una bomba, perciò nell’array delle bombe non potranno esserci due numeri uguali.

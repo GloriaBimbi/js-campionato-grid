@@ -42,14 +42,46 @@ function createGrid(boxesNum) {
   }
 }
 
+// genero un array con le posizioni delle bombe
+let bombsArray = [];
+// creo una variabile per i valori dell'array delle bombe
+let bombElement;
+
 // genero la griglia quando l'utente clicca sul pulsante "play" con un numero di box diverso a seconda del livello di difficoltà scelto
 playButton.addEventListener("click", function () {
   boxContainer.innerHTML = "";
   if (difficultyRange.value == "easy") {
     createGrid(100);
+    while (bombsArray.length < 16) {
+      bombElement = generateRandomNumber(1, 100);
+      if (!bombsArray.includes(bombElement)) {
+        bombsArray.push(bombElement);
+      }
+    }
   } else if (difficultyRange.value == "medium") {
     createGrid(81);
+    while (bombsArray.length < 16) {
+      bombElement = generateRandomNumber(1, 81);
+      if (!bombsArray.includes(bombElement)) {
+        bombsArray.push(bombElement);
+      }
+    }
   } else {
     createGrid(49);
+    while (bombsArray.length < 16) {
+      bombElement = generateRandomNumber(1, 49);
+      if (!bombsArray.includes(bombElement)) {
+        bombsArray.push(bombElement);
+      }
+    }
   }
+  console.log(bombsArray);
 });
+
+console.log(bombsArray);
+
+// creo una funzione che genera dei numeri casuali
+function generateRandomNumber(min, max) {
+  arrayElement = Math.floor(Math.random() * (max + min - 1) + 1);
+  return arrayElement;
+}
