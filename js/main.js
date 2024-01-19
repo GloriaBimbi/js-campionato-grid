@@ -42,46 +42,41 @@ function createGrid(boxesNum) {
   }
 }
 
-// genero un array con le posizioni delle bombe
-let bombsArray = [];
-// creo una variabile per i valori dell'array delle bombe
-let bombElement;
-
 // genero la griglia quando l'utente clicca sul pulsante "play" con un numero di box diverso a seconda del livello di difficoltà scelto
 playButton.addEventListener("click", function () {
   boxContainer.innerHTML = "";
   if (difficultyRange.value == "easy") {
     createGrid(100);
-    while (bombsArray.length < 16) {
-      bombElement = generateRandomNumber(1, 100);
-      if (!bombsArray.includes(bombElement)) {
-        bombsArray.push(bombElement);
-      }
-    }
+    generateBombList(16, 100);
+    console.log(bombsArray);
   } else if (difficultyRange.value == "medium") {
     createGrid(81);
-    while (bombsArray.length < 16) {
-      bombElement = generateRandomNumber(1, 81);
-      if (!bombsArray.includes(bombElement)) {
-        bombsArray.push(bombElement);
-      }
-    }
+    generateBombList(16, 91);
+    console.log(bombsArray);
   } else {
     createGrid(49);
-    while (bombsArray.length < 16) {
-      bombElement = generateRandomNumber(1, 49);
-      if (!bombsArray.includes(bombElement)) {
-        bombsArray.push(bombElement);
-      }
-    }
+    generateBombList(16, 49);
+    console.log(bombsArray);
   }
-  console.log(bombsArray);
 });
-
-console.log(bombsArray);
 
 // creo una funzione che genera dei numeri casuali
 function generateRandomNumber(min, max) {
   arrayElement = Math.floor(Math.random() * (max + min - 1) + 1);
   return arrayElement;
+}
+
+// creo un array per la lista delle posizioni delle bombe
+let bombsArray = [];
+// creo una funzione per generare un array di bombe sulla base del numero delle bombe che voglio (bombsNumber) e delle celle che si hanno (cellsNumber)
+function generateBombList(bombsNumber, cellsNumber) {
+  while (bombsArray.length < bombsNumber) {
+    const bombElement = generateRandomNumber(1, cellsNumber - 1);
+    if (!bombsArray.includes(bombElement)) {
+      bombsArray.push(bombElement);
+    }
+  }
+
+  // restituisco la lista delle bombe
+  return bombsArray;
 }
