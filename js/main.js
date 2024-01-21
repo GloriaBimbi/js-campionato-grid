@@ -20,6 +20,9 @@ function createBox() {
   return box;
 }
 
+// creo un array che tiene traccia delle celle cliccate dall'utente e una variabile che conta quante celle sono state cliccate
+const boxCounterArray = [];
+let boxCounter = 0;
 // creo una funzione che genera una griglia sfruttando quella che genera una box
 function createGrid(boxesNum) {
   for (let i = 1; i <= boxesNum; i++) {
@@ -37,15 +40,40 @@ function createGrid(boxesNum) {
     // creo un evento sul click dell'utente su una box
     boxElement.addEventListener("click", function () {
       // quando l'utente clicca su una box, questa si colora di azzurro
-      this.classList.toggle("hover-back-ground-winner");
+      this.classList.add("hover-back-ground-winner");
       console.log("Hai cliccato la cella numero: " + this.innerText);
       // creo un ciclo che permette di colorare di rosso le caselle che vengono premute, se il loro numero è contenuto nell'array delle bombe
       for (let i = 0; i < bombsArray.length; i++) {
         if (bombsArray[i] == boxElement.innerText) {
           this.classList.add("hover-back-ground-loser");
-          loseMessage.classList.remove("d-none");
-          loseMessage.classList.add("d-block");
+          loseMessage.classList.remove("invisible");
+          loseMessage.classList.add("visible");
         }
+      }
+      // sostituisci a boxCounterArray una dicitura per fari riferimento ai suoi elementi e non all'array
+      if (!boxCounterArray.includes(boxElement.innerText)) {
+        boxCounterArray.push(boxElement.innerText);
+        boxCounter++;
+        console.log(
+          "Hai cliccato " + boxCounter + " caselle" + " su " + boxesNum
+        );
+        console.log(boxCounterArray);
+      }
+      if (
+        difficultyRange.value == "easy" &&
+        boxCounterArray.length == 100 - bombsArray.length
+      ) {
+        alert("HAI SUPERATO IL LIVELLO FACILE");
+      } else if (
+        difficultyRange.value == "medium" &&
+        boxCounterArray.length == 81 - bombsArray.length
+      ) {
+        alert("HAI SUPERATO IL LIVELLO INTERMEDIO!");
+      } else if (
+        difficultyRange.value == "hard" &&
+        boxCounterArray.length == 49 - bombsArray.length
+      ) {
+        alert("HAI SUPERATO IL LIVELLO DIFFICILE! COMPLIMENTI!");
       }
     });
   }
