@@ -50,7 +50,7 @@ function createGrid(boxesNum) {
           loseMessage.classList.add("visible");
         }
       }
-      // sostituisci a boxCounterArray una dicitura per fari riferimento ai suoi elementi e non all'array
+      // creo un if per contare quante caselle vengono premute dall'utente prima che schiacci su una bomba, facendo aumentare il counter se l'innterText della box non è dentro all'array delle bombe
       if (!boxCounterArray.includes(boxElement.innerText)) {
         boxCounterArray.push(boxElement.innerText);
         boxCounter++;
@@ -59,6 +59,8 @@ function createGrid(boxesNum) {
         );
         console.log(boxCounterArray);
       }
+
+      // sulla base del livello di difficoltà scelto, quando l'utente ha schiacchiato su tutte le caselle senza bombe prima di trovare una bomba, faccio uscire un alert che comunica la vittoria
       if (
         difficultyRange.value == "easy" &&
         boxCounterArray.length == 100 - bombsArray.length
